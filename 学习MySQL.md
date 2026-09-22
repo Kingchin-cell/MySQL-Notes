@@ -89,3 +89,81 @@
 ### 概述
 
 ![image-20260920204537808](images/image-20260920204537808.png)
+
+### 外键约束
+
+![image-20260922140942995](images/image-20260922140942995.png)
+
+ 
+
+![image-20260922141600278](images/image-20260922141600278.png)
+
+## 多表查询
+
+### 多表关系
+
+![image-20260922144329471](images/image-20260922144329471.png)
+
+![image-20260922144347778](images/image-20260922144347778.png)
+
+![image-20260922144402542](images/image-20260922144402542.png)
+
+### 内连接
+
+![image-20260922153013365](images/image-20260922153013365.png)
+
+### 外连接
+
+![image-20260922154416821](images/image-20260922154416821.png)
+
+### 自连接
+
+![image-20260922161818619](images/image-20260922161818619.png)
+
+### 联合查询
+
+![image-20260922162901050](images/image-20260922162901050.png)
+
+### 嵌套查询
+
+#### 标量子查询
+
+![image-20260922165436263](images/image-20260922165436263.png)
+
+例如：
+
+```
+select * from emp where dept_id =(select dept.id from dept where dept.name='销售部');
+select * from emp where entrydate>(select entrydate from emp where name='方东白');
+```
+
+#### 列子查询
+
+![image-20260922174801848](images/image-20260922174801848.png)
+
+例如：
+
+```
+select * from emp where salary>all(select salary from emp where dept_id=(select id from dept where name ='财务部'));
+select * from emp where salary>any (select salary from emp where dept_id=(select id from dept where name ='研发部'));
+```
+
+#### 行子查询
+
+![image-20260922190026124](images/image-20260922190026124.png)
+
+例如：
+
+```
+select * from emp where (salary,managerid)=(select salary,managerid from emp where name='张无忌');
+```
+
+#### 表子查询
+
+![image-20260922194903014](images/image-20260922194903014.png)
+
+例如：
+
+```
+select e.*,d.* from (select * from emp where entrydate>'2006-01-01') e left join dept d on e.dept_id=d.id;
+```
