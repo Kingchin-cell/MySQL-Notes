@@ -1,4 +1,4 @@
-# 学习MySQL
+# MySQL基础篇
 
 ## SQL
 
@@ -167,3 +167,20 @@ select * from emp where (salary,managerid)=(select salary,managerid from emp whe
 ```
 select e.*,d.* from (select * from emp where entrydate>'2006-01-01') e left join dept d on e.dept_id=d.id;
 ```
+
+### 事务
+
+#### 事务操作
+
+![image-20260923192538347](images/image-20260923192538347.png)
+
+![image-20260923192604326](images/image-20260923192604326.png)
+
+#### 并发事务问题
+
+![image-20260923200911222](images/image-20260923200911222.png)	
+
+#### 事务隔离级别
+
+![image-20260923200547107](images/image-20260923200547107.png)
+
